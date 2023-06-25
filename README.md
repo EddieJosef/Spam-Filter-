@@ -39,9 +39,29 @@ This part of the code focuses on training the Naive Bayes classifier using the p
 6. Summing the tokens occurring in spam: The code creates a subset of the full training features DataFrame for spam messages (`train_spam_tokens`). It then sums the token occurrences for each token across all spam messages, including a smoothing value of 1 (`summed_spam_tokens`).
 
 By executing this part of the code, you will load and preprocess the training data, calculate the probability of spam, and calculate the token occurrences for spam messages. These steps are essential for training the Naive Bayes classifier in the subsequent parts.
-**Part 3: Bayes Classifier - Evaluation**
+**Part 3: Bayes Classifier - Testing**
 
-In the third part, the trained classifier is evaluated on the testing set. The evaluation includes calculating accuracy, precision, recall, and F1 score. Confusion matrix and classification report are also generated for detailed analysis.
+## Code Functionality
+
+This code performs spam classification using a trained model. It uses the following libraries: `pandas`, `numpy`, `matplotlib.pyplot`, and `seaborn`. 
+
+The code begins by importing the required libraries and setting up the necessary file paths.
+
+Next, it loads the test data from files into numpy arrays: `X_test` contains the test features, and `y_test` contains the corresponding target labels.
+
+Then, the code loads the probability values from files: `prob_token_spam`, `prob_token_ham`, and `prob_all_tokens`.
+
+Using these probabilities and the test features, the code calculates the logarithm of the joint probability of each email being spam or non-spam. These values are stored in `joint_log_spam` and `joint_log_ham`.
+
+Based on these joint log probabilities, the code makes predictions by comparing `joint_log_spam` and `joint_log_ham` and assigning a label of 1 (spam) if `joint_log_spam` is greater, and 0 (non-spam) otherwise. The predictions are stored in the `predictions` array.
+
+The code then plots a scatter plot of `joint_log_spam` against `joint_log_ham` using matplotlib, with a diagonal line indicating the decision boundary. The plot is displayed twice with different axis limits.
+
+Using seaborn, the code creates a summary dataframe that includes `joint_log_spam`, `joint_log_ham`, and the true labels `y_test`. It then plots a scatter plot with `joint_log_spam` on the x-axis, `joint_log_ham` on the y-axis, and different markers for spam and non-spam emails. The decision boundary is also plotted.
+
+Finally, the code calculates various evaluation metrics such as true positives, false positives, false negatives, recall score, precision, and F1 score. These metrics are printed to the console.
+
+Please note that the code snippet provided may be incomplete, and the complete functionality of the code may extend beyond what is shown here.
 
 **Part 4: Model Deployment**
 
