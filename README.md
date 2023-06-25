@@ -65,6 +65,24 @@ Please note that the code snippet provided may be incomplete, and the complete f
 
 **Part 4: Model Deployment**
 
-The final part of the project involves deploying the trained model to make predictions on new, unseen emails. A user interface is created using Flask, which allows users to input email text and receive predictions on whether the email is spam or not.
+Part 4: Functionality of the Code
 
-Please refer to the respective README files for detailed information on each part of the project.
+The code provided implements a spam email filter using scikit-learn's machine learning library. Here is a brief overview of its functionality:
+
+1. Importing Required Libraries: The necessary libraries such as pandas, numpy, and scikit-learn modules are imported.
+
+2. Loading the Data: The code reads the email data from a JSON file, 'email-text-data.json', using the pandas library.
+
+3. Sorting the Data: The data is sorted to ensure consistent indexing and ordering.
+
+4. Text Vectorization: The CountVectorizer class from scikit-learn is used to convert the text data into numerical feature vectors. The stop words (common words like "and," "the," etc.) are removed during the vectorization process.
+
+5. Feature Extraction: The fit_transform() method of the vectorizer is applied to the email messages, generating a sparse matrix representation of the features.
+
+6. Vocabulary Extraction: The vocabulary (unique words) learned by the vectorizer is stored in the 'vectorizer.vocabulary_' attribute.
+
+7. Machine Learning Model: A Naive Bayes classifier (MultinomialNB) is used to train the spam filter. The data is split into training and testing sets using the train_test_split() function.
+
+8. Model Evaluation: Various metrics like precision, recall, F1-score, etc., are computed using the precision_recall_fscore_support(), recall_score(), precision_score(), and f1_score() functions to evaluate the performance of the spam filter.
+
+This code provides a basic implementation of a spam email filter using the Naive Bayes algorithm and vectorization techniques. It can serve as a starting point for further improvements and customization.
